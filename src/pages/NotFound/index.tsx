@@ -8,14 +8,14 @@ export default function NotFound() {
   const navigate = useNavigate();
 
   return (
-    <div className={classNames({
-      [styles.container]: true,
-      [stylesTema.container]: true
-    })}>
+    <div
+      className={classNames({
+        [styles.container]: true,
+        [stylesTema.container]: true,
+      })}
+    >
       <div className={styles.voltar}>
-        <button onClick={() => navigate(-1)}>
-          {"< Voltar"}
-        </button>
+        <button onClick={() => navigate(-1)}>{"< Voltar"}</button>
       </div>
       <NotFoundImage />
     </div>

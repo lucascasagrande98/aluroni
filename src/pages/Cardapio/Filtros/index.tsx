@@ -1,3 +1,4 @@
+import { memo } from "react";
 import filtros from "./filtros.json";
 import styles from "./Filtros.module.scss";
 import classNames from "classnames";
@@ -10,11 +11,11 @@ type IOpcao = (typeof filtros)[0];
 } */
 
 interface Props {
-	filtro: number | null;
-	setFiltro: React.Dispatch<React.SetStateAction<number | null>>;
+  filtro: number | null;
+  setFiltro: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
-export default function Filtros({ filtro, setFiltro }: Props) {
+function Filtros({ filtro, setFiltro }: Props) {
   function selecionarFiltro(opcao: IOpcao) {
     if (filtro === opcao.id) {
       return setFiltro(null);
@@ -32,10 +33,13 @@ export default function Filtros({ filtro, setFiltro }: Props) {
             [styles["filtros__filtro--ativo"]]: filtro === opcao.id,
           })}
           key={opcao.id}
-          onClick={() => selecionarFiltro(opcao)}>
+          onClick={() => selecionarFiltro(opcao)}
+        >
           {opcao.label}
         </button>
       ))}
     </div>
   );
 }
+
+export default memo(Filtros);

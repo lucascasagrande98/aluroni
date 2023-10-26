@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import { Cardapio } from "types/Prato";
 
 interface Props {
-	busca: string;
-	filtro: number | null;
-	ordenador: string;
+  busca: string;
+  filtro: number | null;
+  ordenador: string;
 }
 
 export default function Itens(props: Props) {
@@ -40,15 +40,15 @@ export default function Itens(props: Props) {
   }
 
   useEffect(() => {
-    const novaLista = cardapio.filter((item) => testaBusca(item.title) && testaFiltro(item.category.id));
+    const novaLista = cardapio.filter(
+      (item) => testaBusca(item.title) && testaFiltro(item.category.id)
+    );
     setLista(ordenar(novaLista));
   }, [busca, filtro, ordenador]);
 
   return (
     <div className={styles.itens}>
-      {lista.map((item) => (
-        <Item key={item.id} {...item} />
-      ))}
+      {lista.map((item) => <Item key={item.id} {...item} />)}
     </div>
   );
 }
